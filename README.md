@@ -52,24 +52,24 @@ You can look at the requirements I had when it worked for me in the `versa_pinne
 
 7. I had to set a lot of environment variables, and I needed a ton of help with that from Claude. You can find them all is `versa_env.sh`. You might not need to do this yourself, but I guess it can't hurt.
 
-8. I had to apply some patches. It's possible you won't, if you get a lot of errors about soundfile backend and sox backend, you will need these patches. You'll see the two scripts in this repo. You can just run them as python scripts, and I think they will do the job.
+8. I had to apply some patches. It's possible you won't, if you get a lot of errors about soundfile backend and sox backend, you will need these patches. You'll see the two scripts in this repo. You can just run them as python scripts (make sure any hardcoded paths are updated for you), and I think they will do the job.
 
 ```
 apply_patches.py
 apply_other_patch.py
 ```
 
-9. Add you Hugging Face token to your profile on your cluster, which should make a lot of upcoming downloads for faster. I can never remember how to do this, so I always just look it up on the web.
+9. Add your Hugging Face token to your profile on your cluster, which should make a lot of upcoming downloads for faster. I can never remember how to do this, so I always just look it up on the web.
 
 ## Part 2: Test run
 Do a test run with a non-neural scorer and a neural scorer:
 
-1. Make a sample scp file. You can use the `tiny.scp` file in the `test/temp` dir in this repo. It refers to a test audio file that comes with the versa distribution.
-2. Make a sample yaml file for a non-neural scorer. You can use the `tiny.yaml` file in the `test/temp` dir in this repo. It refers to that `tiny.scp` file, above.
+1. Make a sample scp file. You can use the `tiny.scp` file in the `test/temp` dir in this repo. It refers to a test audio file that comes with the versa distribution. 
+2. Make a sample yaml file for a non-neural scorer. You can use the `tiny.yaml` file in the `test/temp` dir in this repo. It refers to that `tiny.scp` file, above. 
 3. Make a sample yaml file for a neural scorer. You can use the `neural.yaml` file in the `test/temp` dir.
-4. Make sure all the paths are correct in the yaml files and in `test.sh`.
-5. Run the script `test.sh`, which you can also in the `test` dir.
-6. I have provided my `.out` files so you can see the output I got. There are some warnings you can ignore.
+4. Make sure all the paths are correct in the scp file, the yaml files, and in `test.sh`.
+5. Run the script `test.sh`, which is in the `test` dir.
+6. I have provided my `.out` files in the `temp` dir so you can see the output I got. There are some warnings you can ignore.
 
 ## Part 3: Preliminary real run
 1. Get a csv file that has the format `full-path-to-wav-file,transcript-of-that-wav-file` like we use when training wav2vec.
@@ -81,7 +81,7 @@ audio_quality_config.yaml
 run_versa_quality.py
 mini_run.sh
 ```
-4. Edit `mini_run.sh` to make all the paths correct. You can see that I was trying it with some enenlhet data.
+4. Edit `mini_run.sh` to make all the paths correct (e.g., to point at your csv file). You can see that I was trying it with some enenlhet data.
 5. Make it executable and run it.
 6. Hang out because you might have to say "y" to a lot of questions about downloading stuff.
 

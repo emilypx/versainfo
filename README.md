@@ -16,7 +16,7 @@ conda create -n versa python=3.10 -y
 conda activate versa
 ```
 
-2. Install a CUDA-matched PyTorch FIRST, before installing versa itself. You can get your CUDA version with the `nvidia-smi` command. Here's how I installed it with CUDA 12.9 (see the 129 at the end of the URL), which is what we have on our cluster:
+2. Install a CUDA-matched PyTorch, **before** installing versa itself. You can find out your CUDA version with the `nvidia-smi` command. Here's how I installed it with CUDA 12.9 (see the 129 at the end of the URL), which is what we have on our cluster:
 
 ``pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu129``
 
